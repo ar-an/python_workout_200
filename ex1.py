@@ -1,27 +1,27 @@
-from random import randint
-
+import random
 
 
 def guessing_game():
-    rand_number = randint(0,100)
+    print("welcome to the guessing game! The pc chose a number between 1 and 100. Find the number in 3 tries!")
 
-    print("Hi! Try to guess an integer between 0 and 100. Have fun!")
+    random_number = random.randint(1, 100)
+    tries = 0
 
-    user_guess = 0
-
-    while user_guess != rand_number:
+    while tries < 3:
         try:
-            user_guess = int(input("Please guess a number:"))
-        except ValueError:
-            print("Oops! That wasn't an integer! Try again")
-            continue
-        
-        if user_guess == rand_number:
-            print("Just right!")
-        elif user_guess < rand_number:
-            print("Too low!")
-        else:
-            print("Too high!")
-         
+            choice = int(input("Choose a number between 1 and 100:"))
+            tries += 1
+            if choice == random_number:
+                print(f"You found the number after {tries} tries! Well done!")
+                searching_number=False
+            elif choice < random_number:
+                print("Too low!")
+            elif choice > random_number:
+                print("Too high!")
+            if tries == 3:
+                print("Sorry out of luck!")
+        except:
+            print('Please use an integer between 1 and 100')
+
 if __name__ == "__main__":
     guessing_game()
